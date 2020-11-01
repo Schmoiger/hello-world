@@ -1,6 +1,7 @@
 __pycache__*
 Icon*
 .git
+.project
 **/*.DS_Store
 *_old
 docs
