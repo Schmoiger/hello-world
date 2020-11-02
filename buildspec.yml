@@ -22,7 +22,7 @@ phases:
         tests
   post_build:
     commands:
-      - echo Build completed on `date`
+      - python setup.py sdist bdist_wheel
 
 reports:
   coverage:
