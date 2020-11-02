@@ -4,6 +4,7 @@ pipeline {
   stages {
     stage('Build') {
         steps {
+          bash 'source ~/.bash_profile'
           bash 'python --version'
           bash 'workon hello-world'
           bash 'python --version'
