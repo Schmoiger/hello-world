@@ -10,6 +10,7 @@ pipeline {
       stage('Test') {
         steps {
           withPythonEnv('test_env/bin'){
+            bash 'python --version'
             bash 'pip install -r requirements.txt'
             bash 'pytest --junitxml=./tests/results.xml'
           }
