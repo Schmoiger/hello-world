@@ -4,14 +4,14 @@ pipeline {
   stages {
     stage('Build') {
         steps {
-          sh 'python --version'
-          sh 'workon hello-world'
-          sh 'python --version'
+          bash 'python --version'
+          bash 'workon hello-world'
+          bash 'python --version'
         }
       }
       stage('Test') {
         steps {
-          sh 'pytest --junitxml=./tests/results.xml'
+          bash 'pytest --junitxml=./tests/results.xml'
         }
       }
       stage('Deploy') {
