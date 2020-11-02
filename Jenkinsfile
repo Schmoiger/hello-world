@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('Build') {
         steps {
-          bash 'source ~/.bashrc'
+          bash 'source /Users/avi/Library/Python/3.8/bin/virtualenvwrapper.sh'
           bash 'python --version'
           bash 'workon hello-world'
           bash 'python --version'
