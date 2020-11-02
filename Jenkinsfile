@@ -4,23 +4,24 @@ pipeline {
   stages {
     stage('Build') {
         steps {
-            sh 'python --version'
+          sh 'workon hello-world'
         }
       }
       stage('Test') {
         steps {
-          echo 'Testing'
+          sh 'pytest --junitxml=./tests/results.xml'
         }
       }
       stage('Deploy') {
         steps {
-            echo 'Deploying'
+          echo 'Deploying'
         }
       }
     }
   post {
     always {
       echo 'This will always run'
+      junit 'tests/*.xml'
     }
     success {
       echo 'This will run only if successful'

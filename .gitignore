@@ -5,3 +5,4 @@ Icon*
 **/*.DS_Store
 *_old
 docs
+tests/results.xml
