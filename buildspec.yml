@@ -7,34 +7,16 @@ phases:
   pre_build:
     commands:
       - pip install -r requirements.txt
-      - mkdir test-reports
   build:
     commands:
-      - pytest
-        --html=test-reports/report.html
-        --self-contained-html
-        -s
-        -v
-        --cov=dspt
-        --cov-report=html:test-reports/coverage
-        --junitxml=test-reports/junit.xml
-        --log-file=test-reports/logs.txt
-        tests
+      - python -m pytest --junitxml=tests/results.xml
   post_build:
     commands:
       - python setup.py sdist bdist_wheel
 
 reports:
-  coverage:
+  pytest_reports:
     files:
-      - "coverage/*"
-    base-directory: 'test-reports'
-    discard-paths: yes
-  report:
-    files:
-      - 'junit.xml'
-      - 'report.html'
-      - 'assets/*'
-    base-directory: 'test-reports'
-    discard-paths: yes
-    file-format: JunitXml
+      - results.xml
+    base-directory: tests
+    file-format: JUNITXML
