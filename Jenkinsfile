@@ -4,15 +4,15 @@ pipeline {
   stages {
     stage('Build') {
         steps {
-          bash 'source /Users/avi/Library/Python/3.8/bin/virtualenvwrapper.sh'
-          bash 'python --version'
-          bash '#!/bin/bash workon hello-world'
-          bash 'python --version'
+          echo 'Building'
         }
       }
       stage('Test') {
         steps {
-          bash 'pytest --junitxml=./tests/results.xml'
+          withPythonEnv('test_env/bin'){
+            bash 'pip install -r requirements.txt'
+            bash 'pytest --junitxml=./tests/results.xml'
+          }
         }
       }
       stage('Deploy') {
